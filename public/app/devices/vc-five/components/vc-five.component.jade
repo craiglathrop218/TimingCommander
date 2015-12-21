@@ -1,0 +1,31 @@
+//
+   Created by IDT on 12/17/15.
+
+
+div.page-header
+    h1 5P49V5901 (VersaClock® 5) Custom Part Configuration Utility
+    p The 5P49V5901 features one flexible input and four programmable outputs. The device can store up to four configurations selectable using the SEL pins. Use the form below to configure outputs for each configuration used. <br/>IMPORTANT NOTE: In order to minimize sample delivery times, all outputs will be configured to provide RMS phase jitter performance of 1.5 ps or less (12 kHz to 20 MHz integration range). If lower phase jitter is required, please provide the requirements in the comment box located at the bottom of this form.
+
+#global-configuration.col-xs-12.col-md-6.center-block
+    form
+        div.form-group
+            label Configurations
+            |<select class="form-control" required [(ngModel)] = "settings.configurationCount">
+            |   <option *ngFor="#conf of settings.configurationCount_options.options" [value]="conf">{{conf}}</option>
+            |</select>
+
+        div.form-group
+            label I2C Address
+            |<select class="form-control" required [(ngModel)] = "settings.i2cAddress">
+            |    <option *ngFor="#addr of settings.i2cAddress_options.options" [value]="addr">{{addr}}</option>
+            |</select>
+
+        div.form-group
+            label Crystal Load Capacitance(pF)
+            |<select class=form-control required [(ngModel)] = "settings.crystalLoadCap">
+            |    <option *ngFor="#loadCap of settings.crystalLoadCap_options.options" [value]="loadCap">{{loadCap}}</option>
+            |</select>
+
+        button.btn.btn-default(type="submit") Next Step
+
+        div Binding Proof {{settings.crystalLoadCap}}
