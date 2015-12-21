@@ -22,8 +22,11 @@ System.register(["angular2/core", "../services/vc-five.service"], function(expor
             VCFiveComponent = (function () {
                 function VCFiveComponent(_deviceService) {
                     this._deviceService = _deviceService;
+                    this.submitted = false;
+                    this.test = "";
                     this.getSettings();
                 }
+                VCFiveComponent.prototype.onSubmit = function () { this.submitted = true; };
                 VCFiveComponent.prototype.getSettings = function () {
                     this.settings = this._deviceService.getSettings();
                     console.log(this.settings.configurationCount_options);

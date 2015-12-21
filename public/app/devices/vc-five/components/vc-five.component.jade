@@ -26,6 +26,13 @@ div.page-header
             |    <option *ngFor="#loadCap of settings.crystalLoadCap_options.options" [value]="loadCap">{{loadCap}}</option>
             |</select>
 
-        button.btn.btn-default(type="submit") Next Step
+        div.form-group
+            label Free Entry Test
+            div.input-group
+                | <input class=form-control required [(ngModel)] = "test" ngControl="testName" #testName="ngForm"/>
+                span.input-group-btn
+                    button.btn.btn-toolbarc details
+            |<div [hidden]="testName.valid || testName.pristine" class="alert alert-danger">Free Entry Test is required</div>
 
-        div Binding Proof {{settings.crystalLoadCap}}
+
+        button.btn.btn-default(type="submit") Next Step
