@@ -2,9 +2,7 @@
   "name": "TimingCommander",
   "version": "1.0.0",
   "scripts": {
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "start": "concurrent \"npm run tsc:w\" \"node bin/www\" "
+    "start": "node bin/www"
   },
   "license": "ISC",
   "dependencies": {
