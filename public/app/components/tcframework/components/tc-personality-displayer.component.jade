@@ -1,0 +1,12 @@
+div.page-header
+    h1 Timing Commander Personality Demo
+    h2 {{name}}
+
+    h3 Wizards
+    ul
+        li {{name}}
+        li {{name2}}
+
+        | <li *ngFor="#wizard of wizards">
+        |    <span>{{wizard.name}}</span>
+        | </li>
