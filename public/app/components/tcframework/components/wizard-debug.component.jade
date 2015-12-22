@@ -1,0 +1,24 @@
+|<div *ngIf="wizard">
+h3 Wizard Details
+div
+    label Name:
+    span {{wizard.name}}
+div
+    label Width:
+    span {{wizard.width}}
+
+h4 Sections
+ul
+    | <li *ngFor="#section of wizard.sections">
+    div
+        label Header:
+        span {{section.header}}
+    div
+        label Status:
+        span {{section.status}}
+    div
+        label Screen:
+        span {{section.wizardScreen}}
+
+    | </li>
+|</div>

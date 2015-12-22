@@ -8,7 +8,7 @@ export class StartupWizard extends Wizard {
           { "header": "Main", "status": "INCOMPLETE", "wizardScreen": "WizardMain" },
           { "header": "Path1", "status": "INCOMPLETE", "wizardScreen": "WizardPath1" },
           { "header": "Advanced", "status": "OPTIONAL", "wizardScreen": "WizardAdvanced" }
-        ]
+        ];
     }
 
 }

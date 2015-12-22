@@ -1,0 +1,12 @@
+|<div *ngIf="wizardScreen">
+h3 Wizard Screen Details
+div
+    label Name:
+    span {{wizardScreen.name}}
+
+h4 Elements
+ul
+    | <li *ngFor="#element of wizardScreen.elements">
+    span {{element.tostring()}}
+
+|</div>

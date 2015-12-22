@@ -1,7 +1,7 @@
 import {Wizard} from "../../../components/tcframework/data/wizard";
 import {WizardSection} from "../../../components/tcframework/data/wizard-section";
 export class AdvancedWizard extends Wizard {
-    constructor() {super("DemoWiz1 Advanced Wizard", 500); }
+    constructor() {super("DemoWiz1 Advanced Wizard", 600); }
 
     getSections(): WizardSection[] {
         return [
@@ -9,5 +9,4 @@ export class AdvancedWizard extends Wizard {
           { "header": "Advanced2", "status": "INCOMPLETE", "wizardScreen": "WizardAdvanced2" }
         ]
     }
-
 }

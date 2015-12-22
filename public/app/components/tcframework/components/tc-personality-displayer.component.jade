@@ -1,12 +1,61 @@
+style.
+    .wizards {
+        list-style-type: none;
+        margin-left: 1em;
+        padding: 0;
+    }
+
+    .wizards li {
+        cursor: pointer;
+        position: relative;
+        left: 0;
+        transition: all 0.2s ease;
+    }
+
+    .wizards li:hover {
+        color: #369;
+        background-color: #EEE;
+        left: .2em;
+    }
+
+    .selected {
+        background-color: #EEE;
+        color: #369;
+    }
+
 div.page-header
     h1 Timing Commander Personality Demo
-    h2 {{name}}
+    h2 {{personality.name}}
+
+    table
+        tbody
+            tr
+                td
+                    h3 Metadata
+                    ul
+                        | <li *ngFor="#field of personality.dataFields">
+                        span {{field.tostring()}}
+                        | </li>
+
+                td
+                    h3 Data
+                    ul
+                        | <li *ngFor="#data of personality.data">
+                        span {{data.tostring()}}
+                        | </li>
 
     h3 Wizards
-    ul
-        li {{name}}
-        li {{name2}}
-
-        | <li *ngFor="#wizard of wizards">
-        |    <span>{{wizard.name}}</span>
+    ul.wizards
+        | <li *ngFor="#wizard of personality.wizards" (click)="onSelect(wizard)" [class.selected]="wizard === selectedWizard">
+        span {{wizard.name}}
         | </li>
+
+    h3 Wizard Screens
+    ul.wizards
+        | <li *ngFor="#screen of personality.wizardScreens" (click)="onSelectScreen(screen)" [class.selected]="screen === selectedWizardScreen">
+        span {{screen.tostring()}}
+        | </li>
+
+
+    | <wizard-debug [wizard]="selectedWizard"></wizard-debug>
+    | <wizard-screen-debug [wizardScreen]="selectedWizardScreen"></wizard-screen-debug>
