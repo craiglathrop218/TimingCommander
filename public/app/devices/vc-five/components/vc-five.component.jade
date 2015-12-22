@@ -1,38 +1,58 @@
 //
    Created by IDT on 12/17/15.
 
-
 div.page-header
     h1 5P49V5901 (VersaClock® 5) Custom Part Configuration Utility
     p The 5P49V5901 features one flexible input and four programmable outputs. The device can store up to four configurations selectable using the SEL pins. Use the form below to configure outputs for each configuration used. <br/>IMPORTANT NOTE: In order to minimize sample delivery times, all outputs will be configured to provide RMS phase jitter performance of 1.5 ps or less (12 kHz to 20 MHz integration range). If lower phase jitter is required, please provide the requirements in the comment box located at the bottom of this form.
 
-#global-configuration.col-xs-12.col-md-6.center-block
-    form
-        div.form-group
-            label Configurations
-            |<select class="form-control" required [(ngModel)] = "settings.configurationCount">
-            |   <option *ngFor="#conf of settings.configurationCount_options.options" [value]="conf">{{conf}}</option>
-            |</select>
+#global-configuration
+    // Input configurations
+    div.col-xs-12.col-md-6.center-block
+        h2 Global Configuration
+        p Let's start out with some global configuration options. The VersaClock 5 product is capable of storing up to four different configurations. Items in the global configuration section will span across all your configurations. The next section will display once all the global options have been entered.
 
+        |<form (ngSubmit)="onSubmit()" #deviceForm="ngForm">
         div.form-group
-            label I2C Address
-            |<select class="form-control" required [(ngModel)] = "settings.i2cAddress">
-            |    <option *ngFor="#addr of settings.i2cAddress_options.options" [value]="addr">{{addr}}</option>
-            |</select>
-
-        div.form-group
-            label Crystal Load Capacitance(pF)
-            |<select class=form-control required [(ngModel)] = "settings.crystalLoadCap">
-            |    <option *ngFor="#loadCap of settings.crystalLoadCap_options.options" [value]="loadCap">{{loadCap}}</option>
-            |</select>
+            label.col-xs-12.col-md-6.text-right Configurations
+            div.col-xs-12.col-md-6
+                |<select class="form-control" required [(ngModel)] = "settings.configurationCount">
+                |   <option *ngFor="#conf of settings.configurationCount_options.options" [value]="conf">{{conf}}</option>
+                |</select>
 
         div.form-group
-            label Free Entry Test
-            div.input-group
-                | <input class=form-control required [(ngModel)] = "test" ngControl="testName" #testName="ngForm"/>
-                span.input-group-btn
-                    button.btn.btn-toolbarc details
-            |<div [hidden]="testName.valid || testName.pristine" class="alert alert-danger">Free Entry Test is required</div>
+            label.col-xs-12.col-md-6.text-right I2C Address
+            div.col-xs-12.col-md-6
+                |<select class="form-control" required [(ngModel)] = "settings.i2cAddress">
+                |    <option *ngFor="#addr of settings.i2cAddress_options.options" [value]="addr">{{addr}}</option>
+                |</select>
 
+        div.form-group
+            label.col-xs-12.col-md-6.text-right Crystal Load Capacitance
+                small (pF)
+            div.col-xs-12.col-md-6
+                |<select class="form-control" required [(ngModel)] = "settings.crystalLoadCap">
+                |    <option *ngFor="#loadCap of settings.crystalLoadCap_options.options" [value]="loadCap">{{loadCap}}</option>
+                |</select>
 
-        button.btn.btn-default(type="submit") Next Step
+        div.form-group
+            label.col-xs-12.col-md-6.text-right Free Entry
+            div.col-xs-12.col-md-6
+                | <input class="form-control" [(ngModel)]="test" ngControl="testName" #testName="ngForm" required/>
+                |<div [hidden]="testName.valid || testName.pristine" class="alert alert-danger">Free Entry Test is required</div>
+
+        div.col-md-12.text-center.top-buffer-10
+            hr
+        |</form>
+    // Relevant diagram section
+    div.col-xs-12.col-md-6
+        img(src="app/devices/vc-five/images/5P49V5901-block-diagram-config.png" style="")
+
+|<div id="inputs-config-1" [hidden]="!deviceForm.form.valid" >
+div.col-xs-12.col-md-12.center-block
+    h2 Configuration 1 - Inputs
+    p You selected {{settings.configurationCount}} configurations. We will go through each configuration one at a time starting with the inputs and then moving to the outputs.
+
+    img(src="app/devices/vc-five/images/svg-test.svg" style="")
+
+|</div>
+
