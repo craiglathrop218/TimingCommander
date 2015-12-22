@@ -5,8 +5,7 @@ import {Wizard} from "../data/wizard";
 
 @Component({
     selector: "tc-personality",
-    templateUrl: "app/components/tcframework/components/tc-personality-displayer.component.html",
-    directives: [TCPersonalityService]
+    templateUrl: "app/components/tcframework/components/tc-personality-displayer.component.html"
 })
 export class TCPersonalityDisplayerComponent {
 
