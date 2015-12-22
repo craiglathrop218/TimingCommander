@@ -8,5 +8,7 @@ h4 Elements
 ul
     | <li *ngFor="#element of wizardScreen.elements">
     span {{element.tostring()}}
-
+    |<div *ngIf="element.name == 'textBox1'">
+    |   <input [(ngModel)]="element.data.value"/>
+    |</div>
 |</div>
