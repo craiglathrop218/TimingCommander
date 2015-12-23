@@ -8,7 +8,8 @@ export abstract class WizardElement implements IWizardElement {
         public x:number,
         public y:number,
         public width:number,
-        public height:number) {}
+        public height:number,
+        public text:string) {}
 
     get xpx() { return this.x + "px"; }
     get ypx() { return this.y + "px"; }

@@ -12,7 +12,7 @@ export class WizardMain extends WizardScreen {
     }
 
     private _myelements : WizardElement[] = [
-        new WizardDiagramElement(ElementTypes.Label, "label1", 5, 5, 200, 25),
-        new WizardEditableBoundElement(EditableUserInterfaces.ComboBox, "WizardPath", "combobox1", 215, 5, 300, 25)
+        new WizardDiagramElement(ElementTypes.Label, "label1", 5, 5, 60, 25, "Path:"),
+        new WizardEditableBoundElement(EditableUserInterfaces.ComboBox, "WizardPath", "combobox1", 75, 5, 150, 25)
     ];
 }

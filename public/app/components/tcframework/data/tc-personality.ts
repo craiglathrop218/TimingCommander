@@ -25,7 +25,12 @@ export abstract class TCPersonality {
     }
 
     get wizardScreens() : WizardScreen[] {
-        if (this._wizardScreens == null) this._wizardScreens = this.getWizardScreens();
+        if (this._wizardScreens == null) {
+            this._wizardScreens = this.getWizardScreens();
+            for (var i = 0; i < this._wizardScreens.length; i++) {
+                this._wizardScreens[i].bind(this);
+            }
+        }
         return this._wizardScreens;
     }
 

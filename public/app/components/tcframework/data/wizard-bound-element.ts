@@ -12,7 +12,7 @@ export abstract class WizardBoundElement extends WizardElement {
         _y:number,
         _width:number,
         _height:number) {
-        super(_name, _elementType, _x, _y, _width, _height)
+        super(_name, _elementType, _x, _y, _width, _height, "")
     }
 
     tostring(includeType:Boolean=true) { return super.tostring(includeType) + " {{" + this.boundFieldName + "}}"; }

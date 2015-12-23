@@ -11,7 +11,7 @@ export class WizardAdvanced2 extends WizardScreen {
     }
 
     private _myelements : WizardElement[] = [
-        new WizardDiagramElement(ElementTypes.Label, "label4", 0, 0, 80, 20),
+        new WizardDiagramElement(ElementTypes.Label, "label4", 0, 0, 80, 20, "Advanced2:"),
         new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardAdvanced2", "textBox3", 90, 0, 80, 20)
     ];
 }

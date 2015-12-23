@@ -13,7 +13,7 @@ export class WizardPath2 extends WizardScreen {
     }
 
     private _myelements : WizardElement[] = [
-        new WizardDiagramElement(ElementTypes.Label, "label5", 5, 5, 200, 20),
-        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardField2", "textBox4", 215, 5, 300, 20),
+        new WizardDiagramElement(ElementTypes.Label, "label5", 5, 5, 60, 25, "Field2"),
+        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardField2", "textBox4", 75, 5, 150, 25),
     ];
 }

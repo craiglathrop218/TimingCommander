@@ -51,7 +51,7 @@ style.
 
     .elementWrapper {
         position: absolute;
-        border: 1px solid white;
+        /*border: 1px solid white;*/
     }
 
 
@@ -76,7 +76,15 @@ style.
 |                            [style.left]="element.xpx"
 |                            [style.height]="element.heightpx"
 |                            [style.width]="element.widthpx">
-|                           <span>{{element.tostring()}}</span>
+|                           <div *ngIf="element.name.substring(0, 7) == 'textBox'">
+|                               <input [(ngModel)]="element.data.value"/>
+|                           </div>
+|                           <div *ngIf="element.name.substring(0, 5) == 'label'">
+|                               <span>{{element.text}}</span>
+|                           </div>
+|                           <div *ngIf="element.name.substring(0, 5) == 'combo'">
+|                               <span>COMBO {{element.options}}</span>
+|                           </div>
 |                       </div>
 |                   </li>
 |               </ul>

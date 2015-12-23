@@ -38,6 +38,5 @@ export class TCPersonalityDisplayerComponent {
     onSelectScreen(wizardScreen:WizardScreen) {
         this.selectedWizard = null;
         this.selectedWizardScreen = wizardScreen;
-        wizardScreen.bind(this.personality);
     }
 }

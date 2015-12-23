@@ -7,7 +7,8 @@ export class WizardDiagramElement extends WizardElement {
         _x:number,
         _y:number,
         _width:number,
-        _height:number) {
-        super(_name, _elementType, _x, _y, _width, _height)
+        _height:number,
+        _text:string) {
+        super(_name, _elementType, _x, _y, _width, _height, _text)
     }
 }
