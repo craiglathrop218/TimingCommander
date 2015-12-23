@@ -7,11 +7,12 @@ import {WizardDebugComponent} from "./wizard-debug.component";
 import {WizardScreen} from "../data/wizard-screen";
 import {WizardScreenDebugComponent} from "./wizard-screen-debug.component";
 import {TCPersonality} from "../data/tc-personality";
+import {WizardDisplayerComponent} from "./wizard-displayer.component";
 
 @Component({
     selector: "tc-personality",
     templateUrl: "app/components/tcframework/components/tc-personality-displayer.component.html",
-    directives: [WizardDebugComponent, WizardScreenDebugComponent],
+    directives: [WizardDebugComponent, WizardScreenDebugComponent, WizardDisplayerComponent],
 })
 export class TCPersonalityDisplayerComponent {
     public selectedWizard:Wizard;
@@ -30,7 +31,10 @@ export class TCPersonalityDisplayerComponent {
     onSelect(wizard:Wizard) {
         this.selectedWizard = wizard;
         this.selectedWizardScreen = null;
+        wizard.bind(this.personality);
+        wizard.displayInitialSection();
     }
+
     onSelectScreen(wizardScreen:WizardScreen) {
         this.selectedWizard = null;
         this.selectedWizardScreen = wizardScreen;

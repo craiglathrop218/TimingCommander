@@ -12,5 +12,5 @@ export class WizardViewableBoundElement extends WizardBoundElement {
                 _height:number) {
         super(_boundFieldName, ElementTypes.ViewableBoundElement, _name, _x, _y, _width, _height)
     }
-    tostring() { return super.tostring(false) + ". Display with: " + ViewableUserInterfaces[this.userInterface]; }
+    tostring() { return super.tostring(false) + ". UI: " + ViewableUserInterfaces[this.userInterface]; }
 }

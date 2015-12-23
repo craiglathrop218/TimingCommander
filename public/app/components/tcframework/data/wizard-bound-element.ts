@@ -15,7 +15,7 @@ export abstract class WizardBoundElement extends WizardElement {
         super(_name, _elementType, _x, _y, _width, _height)
     }
 
-    tostring(includeType:Boolean=true) { return super.tostring(includeType) + ". Bound to: " + this.boundFieldName; }
+    tostring(includeType:Boolean=true) { return super.tostring(includeType) + " {{" + this.boundFieldName + "}}"; }
 
     public data : Data;
     bind(personality:TCPersonality) {

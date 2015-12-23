@@ -44,11 +44,19 @@ export abstract class TCPersonality {
         return this._data;
     }
 
-    getData(fieldName:string) {
+    getData(fieldName:string) : Data {
         for (var i = 0; i < this.data.length; i++) {
             if (this.data[i].metadata.name == fieldName) return this.data[i];
         }
         return null;
+    }
+
+    getScreen(screenName:string): WizardScreen {
+        for (var i = 0; i < this.wizardScreens.length; i++) {
+            if (this.wizardScreens[i].name == screenName) return this.wizardScreens[i];
+        }
+        return null;
+
     }
 
     createData() : Data[] {

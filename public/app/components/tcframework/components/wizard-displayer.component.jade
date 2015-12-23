@@ -1,0 +1,86 @@
+style.
+    .wizardScreens {
+        list-style-type: none;
+        padding: 0px;
+    }
+
+    div.wizard {
+        border: solid 1px darkblue;
+    }
+
+    .wizardContents {
+        padding-left: 1em;
+        padding-top: 5px;
+        padding-bottom: 10px;
+        background: lightblue;
+        position:relative;
+    }
+
+    div.sectionHeading {
+        background: darkblue;
+        color: white;
+        font-weight:bold;
+        font-size: larger;
+        cursor: pointer;
+    }
+
+    div.sectionHeading:hover {
+        background: royalblue;
+        color: lightgoldenrodyellow;
+        left: .2em;
+    }
+
+    table {
+        border-collapse: separate;
+        width:100%;
+    }
+
+    tr.withPadding > td {
+        padding-bottom: 3px;
+        padding-top: 3px;
+    }
+
+    td.left {
+        padding-left: 1em;
+    }
+
+    td.right {
+        text-align: right;
+        padding-right: 1em;
+    }
+
+    .elementWrapper {
+        position: absolute;
+        border: 1px solid white;
+    }
+
+
+|<div *ngIf="wizard" class="wizard" [style.width]="wizard.widthstr">
+|   <ul class="wizardScreens">
+|       <li *ngFor="#section of wizard.sections">
+|           <div class="sectionHeading">
+|               <table (click)="wizard.onSelect(section)">
+|                   <tr class="withPadding">
+|                      <td class="left">{{section.header}}</td>
+|                       <td class="right">{{section.status}}</td>
+|                   </tr>
+|               </table>
+|           </div>
+|           <div class="wizardContents"
+|                [style.display]="section.isDisplayed ? 'block' : 'none'"
+|                [style.height]="wizard.heightstr">
+|               <ul class="wizardScreens">
+|                   <li *ngFor="#element of section.wizardScreen.elements">
+|                       <div class="elementWrapper"
+|                            [style.top]="element.ypx"
+|                            [style.left]="element.xpx"
+|                            [style.height]="element.heightpx"
+|                            [style.width]="element.widthpx">
+|                           <span>{{element.tostring()}}</span>
+|                       </div>
+|                   </li>
+|               </ul>
+|           </div>
+|       </li>
+|   </ul>
+|</div>

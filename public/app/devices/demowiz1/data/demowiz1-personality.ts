@@ -9,6 +9,8 @@ import {WizardAdvanced2} from "../data/wizard-advanced2";
 import {DataMetadata} from "../../../components/tcframework/data/data-metadata";
 import {DataTypes} from "../../../components/tcframework/data/data-types";
 import {TCPersonality} from "../../../components/tcframework/data/tc-personality";
+import {WizardPath2} from "./wizard-path2";
+import {WizardPath3} from "./wizard-path3";
 
 export class DemoWiz1Personality extends TCPersonality {
     constructor() { super("DemoWiz1"); }
@@ -37,12 +39,14 @@ export class DemoWiz1Personality extends TCPersonality {
     private _localWizardScreens : WizardScreen[] = [
         new WizardMain(),
         new WizardPath1(),
+        new WizardPath2(),
+        new WizardPath3(),
         new WizardAdvanced(),
         new WizardAdvanced2()
     ]
 
     private _localDataFields : DataMetadata[] = [
-        new DataMetadata("WizardPath", DataTypes.string, null, null),
+        new DataMetadata("WizardPath", DataTypes.string, ["Path1", "Path2", "Path3"], null),
         new DataMetadata("WizardField1", DataTypes.int, null, null),
         new DataMetadata("WizardField2", DataTypes.int, null, null),
         new DataMetadata("WizardField3", DataTypes.int, null, null),

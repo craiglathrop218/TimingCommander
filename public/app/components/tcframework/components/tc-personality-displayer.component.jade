@@ -23,6 +23,12 @@ style.
         color: #369;
     }
 
+    td {
+        vertical-align: top;
+    }
+
+
+
 div.page-header
     h1 Timing Commander Personality Demo
     h2 {{personality.name}}
@@ -31,31 +37,31 @@ div.page-header
         tbody
             tr
                 td
+                    h3 Wizards
+                    ul.wizards
+                        | <li *ngFor="#wizard of personality.wizards" (click)="onSelect(wizard)" [class.selected]="wizard === selectedWizard" >
+                        |    <span>{{wizard.name}}</span>
+                        | </li>
+                td
                     h3 Metadata
                     ul
-                        | <li *ngFor="#field of personality.dataFields">
-                        span {{field.tostring()}}
-                        | </li>
+                        |<li *ngFor="#field of personality.dataFields">
+                        |   <span>{{field.tostring()}}</span>
+                        |</li>
 
                 td
                     h3 Data
                     ul
-                        | <li *ngFor="#data of personality.data">
-                        span {{data.tostring()}}
-                        | </li>
-
-    h3 Wizards
-    ul.wizards
-        | <li *ngFor="#wizard of personality.wizards" (click)="onSelect(wizard)" [class.selected]="wizard === selectedWizard">
-        span {{wizard.name}}
-        | </li>
-
-    h3 Wizard Screens
-    ul.wizards
-        | <li *ngFor="#screen of personality.wizardScreens" (click)="onSelectScreen(screen)" [class.selected]="screen === selectedWizardScreen">
-        span {{screen.tostring()}}
-        | </li>
+                        |<li *ngFor="#data of personality.data">
+                        |   <span>{{data.tostring()}}</span>
+                        |</li>
+                td
+                    h3 Wizard Screens
+                    ul.wizards
+                        |<li *ngFor="#screen of personality.wizardScreens" (click)="onSelectScreen(screen)" [class.selected]="screen === selectedWizardScreen">
+                        |    <span>{{screen.tostring()}}</span>
+                        |</li>
 
 
-    | <wizard-debug [wizard]="selectedWizard"></wizard-debug>
-    | <wizard-screen-debug [wizardScreen]="selectedWizardScreen"></wizard-screen-debug>
+| <wizard-displayer [wizard]="selectedWizard"></wizard-displayer>
+| <wizard-screen-debug [wizardScreen]="selectedWizardScreen"></wizard-screen-debug>

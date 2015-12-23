@@ -10,6 +10,11 @@ export abstract class WizardElement implements IWizardElement {
         public width:number,
         public height:number) {}
 
+    get xpx() { return this.x + "px"; }
+    get ypx() { return this.y + "px"; }
+    get widthpx() { return this.width + "px"; }
+    get heightpx() { return this.height + "px"; }
+
     tostring(includeType:Boolean = true) {
         return this.name + ":" + (includeType ? ElementTypes[this.elementType] : "") + " @ (" + this.x + "," + this.y + "), " + this.width + " x " + this.height;
     }

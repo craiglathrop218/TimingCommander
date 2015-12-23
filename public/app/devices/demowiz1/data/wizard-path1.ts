@@ -13,9 +13,9 @@ export class WizardPath1 extends WizardScreen {
     }
 
     private _myelements : WizardElement[] = [
-        new WizardDiagramElement(ElementTypes.Label, "label2", 0, 0, 80, 20),
-        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardField1", "textBox1", 90, 0, 80, 20),
-        new WizardDiagramElement(ElementTypes.Capacitor, "cap1", 20, 50, 50, 50),
-        new WizardDiagramElement(ElementTypes.Resistor, "res1", 80, 50, 50, 50),
+        new WizardDiagramElement(ElementTypes.Label, "label2", 5, 5, 200, 20),
+        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardField1", "textBox1", 215, 5, 300, 20),
+        new WizardDiagramElement(ElementTypes.Capacitor, "cap1", 25, 50, 150, 50),
+        new WizardDiagramElement(ElementTypes.Resistor, "res1", 185, 50, 150, 50),
     ];
 }
