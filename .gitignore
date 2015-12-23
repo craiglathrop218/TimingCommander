@@ -35,6 +35,11 @@ local.properties
 # PDT-specific
 .buildpath
 
+# JS and HTML in rendered folders
+public/app/*.js
+public/app/*.html
+public/app/*.css
+views/*.html
 
 #################
 ## Visual Studio
