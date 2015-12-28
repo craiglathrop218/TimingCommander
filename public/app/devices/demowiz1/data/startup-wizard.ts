@@ -5,9 +5,9 @@ export class StartupWizard extends Wizard {
 
     getSections(): WizardSection[] {
         return [
-          new WizardSection("Main", "INCOMPLETE", "WizardMain"),
-          new WizardSection("Path2", "INCOMPLETE", "WizardPath2"),
-          new WizardSection("Advanced", "OPTIONAL", "WizardAdvanced")
+          new WizardSection("Main", "INCOMPLETE", "WizardMain", 0),
+          new WizardSection("Advanced", "OPTIONAL", "WizardAdvanced", 2),
+          new WizardSection("Path2", "INCOMPLETE", "WizardPath2", 1)
         ];
     }
 

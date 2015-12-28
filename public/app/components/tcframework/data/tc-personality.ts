@@ -2,6 +2,7 @@ import {WizardScreen} from "../data/wizard-screen";
 import {Wizard} from "../data/wizard";
 import {DataMetadata} from "../data/data-metadata";
 import {Data} from "../data/data";
+import {IDataChangeListener} from "../interfaces/idata-change-listener";
 
 export abstract class TCPersonality {
     constructor(protected _name: string) { }
@@ -71,9 +72,25 @@ export abstract class TCPersonality {
         //for (var meta in this.dataFields) {
         for (var i = 0; i < this.dataFields.length; i++) {
             var meta = this.dataFields[i];
-            res.push(new Data(meta));
+            res.push(new Data(meta, this));
         }
         return res;
     }
 
+    _listeners : IDataChangeListener[] = [];
+
+    addDataChangeListener(listener: IDataChangeListener) {
+        this._listeners.push(listener);
+    }
+
+    removeDataChangeListener(listener: IDataChangeListener) {
+        var index: number = this._listeners.indexOf(listener, 0);
+        if (index != -1) this._listeners.splice(index, 1);
+    }
+
+    dataChanged(oldValue, newValue, metadata: DataMetadata) {
+        for (var i = 0; i < this._listeners.length; i++) {
+            this._listeners[i].dataChanged(oldValue, newValue, metadata);
+        }
+    }
 }

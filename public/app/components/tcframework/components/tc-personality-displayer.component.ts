@@ -27,8 +27,9 @@ export class TCPersonalityDisplayerComponent {
         return this._personality;
     }
 
-
     onSelect(wizard:Wizard) {
+        if (this.selectedWizard != null)
+            this.selectedWizard.unbind(this.personality);
         this.selectedWizard = wizard;
         this.selectedWizardScreen = null;
         wizard.bind(this.personality);
