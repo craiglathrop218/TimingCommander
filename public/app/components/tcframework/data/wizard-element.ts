@@ -16,9 +16,10 @@ export abstract class WizardElement implements IWizardElement {
     get widthpx() { return this.width + "px"; }
     get heightpx() { return this.height + "px"; }
 
-    tostring(includeType:Boolean = true) {
+    public toStringCustom(includeType:Boolean = true) {
         return this.name + ":" + (includeType ? ElementTypes[this.elementType] : "") + " @ (" + this.x + "," + this.y + "), " + this.width + " x " + this.height;
     }
+    public toString() { return this.toStringCustom(); }
 
     bind(personality:TCPersonality) {}
 }

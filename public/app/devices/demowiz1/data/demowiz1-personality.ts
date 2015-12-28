@@ -11,6 +11,7 @@ import {DataTypes} from "../../../components/tcframework/data/data-types";
 import {TCPersonality} from "../../../components/tcframework/data/tc-personality";
 import {WizardPath2} from "./wizard-path2";
 import {WizardPath3} from "./wizard-path3";
+import {DataOption} from "../../../components/tcframework/data/data-option";
 
 export class DemoWiz1Personality extends TCPersonality {
     constructor() { super("DemoWiz1"); }
@@ -46,11 +47,11 @@ export class DemoWiz1Personality extends TCPersonality {
     ]
 
     private _localDataFields : DataMetadata[] = [
-        new DataMetadata("WizardPath", DataTypes.string, ["Path1", "Path2", "Path3"], null),
-        new DataMetadata("WizardField1", DataTypes.int, null, null),
-        new DataMetadata("WizardField2", DataTypes.int, null, null),
-        new DataMetadata("WizardField3", DataTypes.int, null, null),
-        new DataMetadata("WizardAdvanced1", DataTypes.int, null, null),
-        new DataMetadata("WizardAdvanced2", DataTypes.int, null, null),
+        new DataMetadata("WizardPath", DataTypes.string, [new DataOption("Path1", null), new DataOption("Path2", null), new DataOption("Path3", null)], null, "Path1"),
+        new DataMetadata("WizardField1", DataTypes.int, null, null, 11),
+        new DataMetadata("WizardField2", DataTypes.int, null, null, 12),
+        new DataMetadata("WizardField3", DataTypes.int, null, null, 13),
+        new DataMetadata("WizardAdvanced1", DataTypes.int, null, null, 42),
+        new DataMetadata("WizardAdvanced2", DataTypes.int, null, null, 43),
     ]
 }

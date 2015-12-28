@@ -12,7 +12,7 @@ export abstract class WizardScreen {
         return this._elements;
     }
 
-    tostring() {
+    public toString() {
         return this.name;
     }
 

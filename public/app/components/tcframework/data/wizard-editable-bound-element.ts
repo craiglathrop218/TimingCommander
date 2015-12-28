@@ -13,5 +13,5 @@ export class WizardEditableBoundElement extends WizardBoundElement {
         super(_boundFieldName, ElementTypes.EditableBoundElement, _name, _x, _y, _width, _height)
     }
 
-    tostring() { return super.tostring(false) + ". UI: " + EditableUserInterfaces[this.userInterface]; }
+    public toString() { return super.toStringCustom(false) + ". UI: " + EditableUserInterfaces[this.userInterface]; }
 }

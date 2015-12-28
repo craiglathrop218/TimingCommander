@@ -9,7 +9,7 @@ export class WizardSection implements IDataChangeListener {
     isDisplayed : boolean = false;
     wizardScreen:WizardScreen;
 
-    get tostring() {
+    public toString() {
         return this.header + " [" + this.status + "] (screen: " + this.wizardScreenName + ")";
     }
 
@@ -36,5 +36,15 @@ export class WizardSection implements IDataChangeListener {
         personality.removeDataChangeListener(this);
     }
 
+    public equals (rhs: WizardSection) {
+        this.dbg(`${this.header} == ${rhs.header}? ${this.header == rhs.header}`)
+        this.dbg(`${this.wizardScreenName} == ${rhs.wizardScreenName}? ${this.wizardScreenName == rhs.wizardScreenName}`)
+        var res = this.header == rhs.header && this.wizardScreenName == rhs.wizardScreenName;
+        this.dbg(`res: ${res}`)
+        return res;
+    }
 
+    dbg(msg: string) {
+        //console.log(msg);
+    }
 }

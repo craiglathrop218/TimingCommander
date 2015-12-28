@@ -51,14 +51,22 @@ style.
 
     .elementWrapper {
         position: absolute;
-        /*border: 1px solid white;*/
     }
+
+    .debugborder {
+        border: 1px solid white;
+    }
+
+    select {
+        width:100%;
+    }
+
 
 
 |<div *ngIf="wizard" class="wizard" [style.width]="wizard.widthstr">
 |   <ul class="wizardScreens">
-|       <li *ngFor="#section of wizard.sections">
-|           <div class="sectionHeading">
+|       <li *ngIf="wizard.sections" *ngFor="#section of wizard.sections">
+|           <div *ngIf="section" class="sectionHeading">
 |               <table (click)="wizard.onSelect(section)">
 |                   <tr class="withPadding">
 |                      <td class="left">{{section.header}}</td>
@@ -66,28 +74,30 @@ style.
 |                   </tr>
 |               </table>
 |           </div>
-|           <div class="wizardContents"
-|                [style.display]="section.isDisplayed ? 'block' : 'none'"
-|                [style.height]="wizard.heightstr">
-|               <ul class="wizardScreens">
-|                   <li *ngFor="#element of section.wizardScreen.elements">
-|                       <div class="elementWrapper"
-|                            [style.top]="element.ypx"
-|                            [style.left]="element.xpx"
-|                            [style.height]="element.heightpx"
-|                            [style.width]="element.widthpx">
-|                           <div *ngIf="element.name.substring(0, 7) == 'textBox'">
-|                               <input [(ngModel)]="element.data.value"/>
+|           <div *ngIf="section">
+|               <div *ngIf="section.wizardScreen" class="wizardContents"
+|                    [style.display]="section.isDisplayed ? 'block' : 'none'"
+|                   [style.height]="wizard.heightstr">
+|                  <ul class="wizardScreens">
+|                       <li *ngFor="#element of section.wizardScreen.elements">
+|                           <div class="elementWrapper"
+|                                [style.top]="element.ypx"
+|                                [style.left]="element.xpx"
+|                                [style.height]="element.heightpx"
+|                                [style.width]="element.widthpx">
+|                               <div *ngIf="element.name.substring(0, 7) == 'textBox'">
+|                                   <input [(ngModel)]="element.data.value"/>
+|                               </div>
+|                               <div *ngIf="element.name.substring(0, 5) == 'label'">
+|                                   <span>{{element.text}}</span>
+|                               </div>
+|                               <div *ngIf="element.name.substring(0, 5) == 'combo'">
+|                                   <select [(ngModel)]="element.data.value"><option *ngFor="#o of element.data.metadata.options" [value]="o.value">{{o.display}}</option></select>
+|                              </div>
 |                           </div>
-|                           <div *ngIf="element.name.substring(0, 5) == 'label'">
-|                               <span>{{element.text}}</span>
-|                           </div>
-|                           <div *ngIf="element.name.substring(0, 5) == 'combo'">
-|                               <span>COMBO {{element.options}}</span>
-|                           </div>
-|                       </div>
-|                   </li>
-|               </ul>
+|                       </li>
+|                   </ul>
+|             </div>
 |           </div>
 |       </li>
 |   </ul>

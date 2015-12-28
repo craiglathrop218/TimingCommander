@@ -90,6 +90,7 @@ export abstract class TCPersonality {
 
     dataChanged(oldValue, newValue, metadata: DataMetadata) {
         for (var i = 0; i < this._listeners.length; i++) {
+            //console.log(`calling listener @ ${i} (${this._listeners[i]})`);
             this._listeners[i].dataChanged(oldValue, newValue, metadata);
         }
     }

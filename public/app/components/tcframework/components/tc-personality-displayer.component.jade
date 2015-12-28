@@ -46,20 +46,20 @@ div.page-header
                     h3 Metadata
                     ul
                         |<li *ngFor="#field of personality.dataFields">
-                        |   <span>{{field.tostring()}}</span>
+                        |   <span>{{field.toString()}}</span>
                         |</li>
 
                 td
                     h3 Data
                     ul
                         |<li *ngFor="#data of personality.data">
-                        |   <span>{{data.tostring()}}</span>
+                        |   <span>{{data.toString()}}</span>
                         |</li>
                 td
                     h3 Wizard Screens
                     ul.wizards
                         |<li *ngFor="#screen of personality.wizardScreens" (click)="onSelectScreen(screen)" [class.selected]="screen === selectedWizardScreen">
-                        |    <span>{{screen.tostring()}}</span>
+                        |    <span>{{screen.toString()}}</span>
                         |</li>
 
 
