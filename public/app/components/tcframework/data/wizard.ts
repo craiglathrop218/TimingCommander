@@ -3,9 +3,20 @@ import {WizardSection} from "./wizard-section";
 import {TCPersonality} from "./tc-personality";
 import {IDataChangeListener} from "../interfaces/idata-change-listener";
 import {DataMetadata} from "./data-metadata";
+import {WizardValidationInfo} from "./wizard-validation-info";
 @Injectable()
 export abstract class Wizard implements IDataChangeListener {
+    _personality : TCPersonality;
+    public isReadyToFinish : boolean = false;
+    public canGoToNextSection : boolean = false;
+
     constructor(public name:string, public width:number, public height:number) {}
+
+    /* ----------- Abstract Wizard Functions ----------- */
+    abstract getSections() : WizardSection[];
+    abstract isWizardReadyToFinish(): boolean;
+    abstract validateWizard(): WizardValidationInfo;
+    /* ------------------------------------------------- */
 
     get widthstr() : string { return this.width + "px"; }
     get heightstr() : string { return this.height + "px"; }
@@ -124,8 +135,6 @@ export abstract class Wizard implements IDataChangeListener {
         }
     }
 
-    abstract getSections() : WizardSection[];
-
     public toString() { return this.name + " (width: " + this.width + ")"; }
 
     displayInitialSection() {
@@ -147,11 +156,18 @@ export abstract class Wizard implements IDataChangeListener {
         return null;
     }
 
-    _personality : TCPersonality;
+    get nextSection() : WizardSection {
+        for (var i = 0; i < this.sections.length; i++) {
+            if (this.sections[i].isDisplayed) {
+                return (i == this.sections.length - 1) ? null : this.sections[i+1];
+            }
+        }
+        return this.sections[0];
+    }
 
     bind (personality:TCPersonality) {
         this._personality = personality;
-        this.refreshSections();
+        this.updateAll();
         personality.addDataChangeListener(this);
     }
 
@@ -165,13 +181,31 @@ export abstract class Wizard implements IDataChangeListener {
     }
 
 
-
     // This is all part of my hacked-together architecture for handling change
     // notifications for the data object.  If there's a better way to do that, this can be removed.
     dataChanged(oldValue, newValue, metadata:DataMetadata):void {
         console.log(`Wizard[${this.name}]::dataChanged. ${metadata.name}: newValue = ${newValue}`);
+        this.updateAll();
+    }
 
+    updateAll() {
         // get the sections each time a data value changes.  Update the array if necessary.
         this.refreshSections();
+        this.isReadyToFinish = this.isWizardReadyToFinish();
+        this.canGoToNextSection = this.nextSection != null;
+    }
+
+    public onFinish() {
+        var error = this.validateWizard();
+        if (error == null)
+            alert("finished!");
+        else
+            alert(error.errorMessage);
+    }
+
+    public onNextSection() {
+        var next = this.nextSection;
+        if (next != null) this.onSelect(next);
+        this.canGoToNextSection = this.nextSection != null;
     }
 }

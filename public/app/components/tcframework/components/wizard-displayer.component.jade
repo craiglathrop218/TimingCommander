@@ -101,4 +101,6 @@ style.
 |           </div>
 |       </li>
 |   </ul>
+|   <button [style.display]="wizard.canGoToNextSection ? 'block' : 'none'" (click)="wizard.onNextSection()">Next</button>
+|   <button [style.display]="wizard.isReadyToFinish ? 'block' : 'none'" (click)="wizard.onFinish()">Finish</button>
 |</div>
