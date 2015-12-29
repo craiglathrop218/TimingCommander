@@ -65,6 +65,14 @@ export abstract class TCPersonality {
 
     }
 
+    public getWizard(wizardName:string): Wizard {
+        for (var i = 0; i < this.wizards.length; i++) {
+            if (this.wizards[i].name == wizardName) return this.wizards[i];
+        }
+        return null;
+
+    }
+
     createData() : Data[] {
         var res :Data[] = [];
 

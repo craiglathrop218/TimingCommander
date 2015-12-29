@@ -1,0 +1,13 @@
+style.
+    div.spacebefore {
+        margin-top: 1em;
+    }
+
+div.container
+    h3 DemoWiz1
+    span Thank you for trying DemoWiz1, blah blah blah...
+
+    div.spacebefore
+        | <wizard-displayer [wizard]="selectedWizard"></wizard-displayer>
+        h3 DemoWiz1 Advanced
+        | <button (click)="launchWizard('DemoWiz1 Advanced Wizard')">ADVANCED</button>
