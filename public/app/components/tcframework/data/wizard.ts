@@ -38,6 +38,8 @@ export abstract class Wizard implements IDataChangeListener {
                 if (!this.sections[i].equals(list[i])) {
                     same = false;
                     break;
+                } else {
+                    this.sections[i].status = list[i].status;
                 }
             }
             // nothing to do, so get out.
@@ -146,6 +148,7 @@ export abstract class Wizard implements IDataChangeListener {
         console.log(`displaying section: ${section}. wizardScreen: ${section.wizardScreen}`)
         section.isDisplayed = true;
         section.displayed(this._personality);
+        this.canGoToNextSection = this.nextSection != null;
     }
 
     get currentSection() : WizardSection {
@@ -212,7 +215,7 @@ export abstract class Wizard implements IDataChangeListener {
                 return;
             }
             this.onSelect(next);
-        }
-        this.canGoToNextSection = this.nextSection != null;
+        } else
+            this.canGoToNextSection = false;
     }
 }

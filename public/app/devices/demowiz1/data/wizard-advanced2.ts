@@ -14,7 +14,7 @@ export class WizardAdvanced2 extends WizardScreen {
     validateWizardScreen(wizardName:string):WizardValidationInfo { return null; }
 
     private _myelements : WizardElement[] = [
-        new WizardDiagramElement(ElementTypes.Label, "label4", 0, 0, 80, 20, "Advanced2:"),
-        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardAdvanced2", "textBox3", 90, 0, 80, 20)
+        new WizardDiagramElement(ElementTypes.Label, "label4", 0, 0, 80, 20, "Advanced3:"),
+        new WizardEditableBoundElement(EditableUserInterfaces.TextBox, "WizardAdvanced3", "textBox3", 90, 0, 80, 20)
     ];
 }

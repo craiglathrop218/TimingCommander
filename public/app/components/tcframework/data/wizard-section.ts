@@ -4,7 +4,7 @@ import {WizardScreen} from "./wizard-screen";
 import {IDataChangeListener} from "../interfaces/idata-change-listener";
 import {DataMetadata} from "./data-metadata";
 export class WizardSection implements IDataChangeListener {
-    constructor(public header: string, public status: string, public wizardScreenName: string, public sortOrder: int) {}
+    constructor(public header: string, public status: string, public wizardScreenName: string, public sortOrder: number) {}
 
     isDisplayed : boolean = false;
     wizardScreen:WizardScreen;
@@ -20,7 +20,6 @@ export class WizardSection implements IDataChangeListener {
     unbind(personality: TCPersonality) {
         this.undisplayed(personality);
     }
-
 
     // This is all part of my hacked-together architecture for handling change
     // notifications for the data object.  If there's a better way to do that, this can be removed.

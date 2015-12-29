@@ -10,11 +10,11 @@ import {TCPersonality} from "../data/tc-personality";
 import {WizardDisplayerComponent} from "./wizard-displayer.component";
 
 @Component({
-    selector: "tc-personality",
-    templateUrl: "app/components/tcframework/components/tc-personality-displayer.component.html",
+    selector: "tc-personality-debugger",
+    templateUrl: "app/components/tcframework/components/tc-personality-debugger.component.html",
     directives: [WizardDebugComponent, WizardScreenDebugComponent, WizardDisplayerComponent],
 })
-export class TCPersonalityDisplayerComponent {
+export class TCPersonalityDebuggerComponent {
     public selectedWizard:Wizard;
     public selectedWizardScreen:WizardScreen;
     private _personality : TCPersonality;

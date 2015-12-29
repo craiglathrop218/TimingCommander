@@ -53,5 +53,6 @@ export class DemoWiz1Personality extends TCPersonality {
         new DataMetadata("WizardField3", DataTypes.int, null, null, 0),
         new DataMetadata("WizardAdvanced1", DataTypes.int, null, null, 42),
         new DataMetadata("WizardAdvanced2", DataTypes.int, null, null, 43),
+        new DataMetadata("WizardAdvanced3", DataTypes.string, null, null, null),
     ]
 }

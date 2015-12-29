@@ -49,6 +49,10 @@ style.
         padding-right: 1em;
     }
 
+    td.center {
+        text-align: center;
+    }
+
     .elementWrapper {
         position: absolute;
     }
@@ -61,7 +65,9 @@ style.
         width:100%;
     }
 
-
+    table.gridlines, td.gridlines {
+       border: 1px solid black;
+    }
 
 |<div *ngIf="wizard" class="wizard" [style.width]="wizard.widthstr">
 |   <ul class="wizardScreens">
@@ -101,6 +107,14 @@ style.
 |           </div>
 |       </li>
 |   </ul>
-|   <button [style.display]="wizard.canGoToNextSection ? 'block' : 'none'" (click)="wizard.onNextSection()">Next</button>
-|   <button [style.display]="wizard.isReadyToFinish ? 'block' : 'none'" (click)="wizard.onFinish()">Finish</button>
+|   <table>
+|       <tr >
+|           <td style="text-align:center;">
+|               <button [style.display]="wizard.canGoToNextSection ? 'block' : 'none'" (click)="wizard.onNextSection()">Next</button>
+|           </td>
+|           <td style="text-align:center;">
+|              <button [style.display]="wizard.isReadyToFinish ? 'block' : 'none'" (click)="wizard.onFinish()">Finish</button>
+|           </td>
+|       </tr>
+|   </table>
 |</div>
