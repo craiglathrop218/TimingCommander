@@ -15,15 +15,19 @@ export class StartupWizard extends Wizard {
     }
 
     isWizardReadyToFinish():boolean {
-        return this.currentWizardFieldValue > 0;
+        var val = this.currentWizardFieldValue;
+        return val != undefined && val > 0;
     }
 
     get currentWizardFieldValue() : number {
-        return this._personality.getData(this.currentWizardFieldName).value;
+        var name = this.currentWizardFieldName;
+        if (name == null) return undefined;
+        return this._personality.getData(name).value;
     }
 
     get currentWizardFieldName() : string {
         var path = this._personality.getData("WizardPath").value;
+        if (path == null) return null;
         return `WizardField${path.substring(path.length - 1)}`;
     }
 

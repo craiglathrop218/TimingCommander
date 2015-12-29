@@ -205,7 +205,14 @@ export abstract class Wizard implements IDataChangeListener {
 
     public onNextSection() {
         var next = this.nextSection;
-        if (next != null) this.onSelect(next);
+        if (next != null) {
+            var error = this.currentSection.wizardScreen.validateWizardScreen(this.name);
+            if (error != null) {
+                alert(error.errorMessage);
+                return;
+            }
+            this.onSelect(next);
+        }
         this.canGoToNextSection = this.nextSection != null;
     }
 }

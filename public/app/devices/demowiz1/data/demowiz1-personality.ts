@@ -47,7 +47,7 @@ export class DemoWiz1Personality extends TCPersonality {
     ]
 
     private _localDataFields : DataMetadata[] = [
-        new DataMetadata("WizardPath", DataTypes.string, [new DataOption("Path1", null), new DataOption("Path2", null), new DataOption("Path3", null)], null, "Path1"),
+        new DataMetadata("WizardPath", DataTypes.string, [new DataOption("Path1", null), new DataOption("Path2", null), new DataOption("Path3", null)], null, null),
         new DataMetadata("WizardField1", DataTypes.int, null, null, 0),
         new DataMetadata("WizardField2", DataTypes.int, null, null, 0),
         new DataMetadata("WizardField3", DataTypes.int, null, null, 0),

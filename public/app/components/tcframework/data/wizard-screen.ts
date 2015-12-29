@@ -1,9 +1,16 @@
 import {WizardElement} from "./wizard-element";
 import {TCPersonality} from "./tc-personality";
+import {WizardValidationInfo} from "./wizard-validation-info";
+import {Data} from "./data";
 export abstract class WizardScreen {
+    private _personality: TCPersonality;
+
     constructor(public name:string) {}
 
+    /* ----------- Abstract Wizard Functions ----------- */
     abstract getElements() : WizardElement[];
+    abstract validateWizardScreen(wizardName:string): WizardValidationInfo;
+    /* ------------------------------------------------- */
 
     private _elements : WizardElement[];
 
@@ -16,10 +23,14 @@ export abstract class WizardScreen {
         return this.name;
     }
 
-    private bound:Boolean = false;
     bind(personality:TCPersonality) {
-        if (this.bound) return;
-        this.bound = true;
+        if (this._personality != undefined) return;
+        this._personality = personality;
         for (var i = 0; i < this.elements.length; i++) this.elements[i].bind(personality);
+    }
+
+    protected getData(fieldName: string) : Data {
+        if (this._personality == undefined) return null;
+        return this._personality.getData(fieldName);
     }
 }
